@@ -1,7 +1,64 @@
 jobconfig:
   presets: []
-  presubmits: {}
-  postsubmits: {}
+  presubmits:
+    test-org/test-repo:
+    - jobbase:
+        name: integration
+        labels: {}
+        maxconcurrency: 0
+        agent: tekton
+        cluster: ""
+        namespace: null
+        erroroneviction: false
+        sourcepath: ""
+        spec: null
+        buildspec: null
+        utilityconfig:
+          decorate: false
+          pathalias: ""
+          cloneuri: ""
+          skipsubmodules: false
+          extrarefs: []
+          decorationconfig: null
+      alwaysrun: true
+      context: integration
+      optional: false
+      skipreport: false
+      trigger: (?m)^/test( all| this),?(\s+|$)
+      reruncommand: /test this
+      brancher:
+        skipbranches: []
+        branches: []
+      regexpchangematcher:
+        runifchanged: ""
+  postsubmits:
+    test-org/test-repo:
+    - jobbase:
+        name: release
+        labels: {}
+        maxconcurrency: 0
+        agent: tekton
+        cluster: ""
+        namespace: null
+        erroroneviction: false
+        sourcepath: ""
+        spec: null
+        buildspec: null
+        utilityconfig:
+          decorate: false
+          pathalias: ""
+          cloneuri: ""
+          skipsubmodules: false
+          extrarefs: []
+          decorationconfig: null
+      regexpchangematcher:
+        runifchanged: ""
+      brancher:
+        skipbranches: []
+        branches:
+        - master
+      context: ""
+      report: false
   periodics: []
 prowconfig:
   tide:
@@ -12,17 +69,23 @@ prowconfig:
     queries: []
     mergetype: {}
     targeturl: ""
-    prstatusbaseurl: ""
-    blockerlabel: ""
+    prstatusbaseurl: http://fakeurl
+    blockerlabel: hold
     squashlabel: ""
-    maxgoroutines: 0
+    maxgoroutines: 5
     contextoptions:
       tidecontextpolicy:
         skipunknowncontexts: null
-        requiredcontexts: []
-        requiredifpresentcontexts: []
-        optionalcontexts: []
-        frombranchprotection: null
+        requiredcontexts:
+        - context1
+        - context2
+        requiredifpresentcontexts:
+        - context55
+        - context66
+        - context77
+        optionalcontexts:
+        - opt1
+        frombranchprotection: true
       orgs: {}
   plank:
     controller:
@@ -61,8 +124,27 @@ prowconfig:
       admins: null
       restrictions: null
       requiredpullrequestreviews: null
-    protecttested: false
-    orgs: {}
+    protecttested: true
+    orgs:
+      test-org:
+        policy:
+          protect: null
+          requiredstatuschecks: null
+          admins: null
+          restrictions: null
+          requiredpullrequestreviews: null
+        repos:
+          test-repo:
+            policy:
+              protect: true
+              requiredstatuschecks:
+                contexts:
+                - integration
+                strict: null
+              admins: null
+              restrictions: null
+              requiredpullrequestreviews: null
+            branches: {}
     allowdisabledpolicies: false
   orgs: {}
   gerrit:
