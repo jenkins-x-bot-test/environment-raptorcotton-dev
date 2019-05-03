@@ -1,0 +1,45 @@
+plugins: {}
+externalplugins: {}
+owners:
+  mdyamlrepos: []
+  skipcollaborators: []
+  labelsblacklist: []
+approve: []
+usedeprecatedselfapprove: false
+usedeprecatedreviewapprove: false
+blockades: []
+blunderbuss:
+  reviewercount: null
+  maxreviewercount: 0
+  fileweightcount: null
+  excludeapprovers: false
+cat:
+  keypath: ""
+cherrypickunapproved:
+  branchregexp: ""
+  branchre: null
+  comment: ""
+configupdater:
+  maps: {}
+  configfile: ""
+  pluginfile: ""
+golint: null
+heart:
+  adorees: []
+  commentregexp: ""
+  commentre: null
+label: null
+lgtm: []
+repomilestone: {}
+requirematchinglabel: []
+requiresig:
+  grouplisturl: ""
+slack:
+  mentionchannels: []
+  mergewarnings: []
+sigmention:
+  regexp: ""
+  re: null
+size: null
+triggers: []
+welcome: []
