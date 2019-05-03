@@ -1,10 +1,33 @@
-plugins: {}
-externalplugins: {}
+plugins:
+  test-org/test-repo:
+  - config-updater
+  - approve
+  - assign
+  - blunderbuss
+  - help
+  - hold
+  - lgtm
+  - lifecycle
+  - size
+  - trigger
+  - wip
+  - heart
+  - override
+externalplugins:
+  test-org/test-repo: []
 owners:
   mdyamlrepos: []
   skipcollaborators: []
   labelsblacklist: []
-approve: []
+approve:
+- repos:
+  - test-org/test-repo
+  issuerequired: false
+  deprecatedimplicitselfapprove: null
+  requireselfapproval: null
+  lgtmactsasapprove: true
+  deprecatedreviewactsasapprove: null
+  ignorereviewstate: false
 usedeprecatedselfapprove: false
 usedeprecatedreviewapprove: false
 blockades: []
