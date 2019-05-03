@@ -1,0 +1,10 @@
+auth:
+  git:
+    username: jenkins-x-bot-test
+build:
+  enabled: false
+buildnum:
+  enabled: false
+pipelinerunner:
+  enabled: "true"
+tillerNamespace: ""
