@@ -87,6 +87,9 @@ jobconfig:
         skipbranches: []
         branches:
         - master
+        - master
+        - master
+        - master
       context: ""
       report: false
     cb-kubecd/jx-scheduler-test-repo:
@@ -113,6 +116,7 @@ jobconfig:
       brancher:
         skipbranches: []
         branches:
+        - master
         - master
         - master
         - master
@@ -150,13 +154,7 @@ prowconfig:
       includedbranches: []
       labels:
       - approved
-      - approved
       missinglabels:
-      - do-not-merge
-      - do-not-merge/hold
-      - do-not-merge/work-in-progress
-      - needs-ok-to-test
-      - needs-rebase
       - do-not-merge
       - do-not-merge/hold
       - do-not-merge/work-in-progress

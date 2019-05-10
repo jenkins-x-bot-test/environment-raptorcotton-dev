@@ -1,4 +1,8 @@
-plugins: {}
+plugins:
+  cb-kubecd/environment-raptorcotton-dev:
+  - config-updater
+  cb-kubecd/jx-scheduler-test-repo:
+  - config-updater
 externalplugins: {}
 owners:
   mdyamlrepos: []
@@ -36,7 +40,19 @@ cherrypickunapproved:
   branchre: null
   comment: ""
 configupdater:
-  maps: {}
+  maps:
+    env/prow/config.yaml:
+      name: config
+      key: ""
+      namespace: ""
+      additionalnamespaces: []
+      namespaces: []
+    env/prow/plugins.yaml:
+      name: plugins
+      key: ""
+      namespace: ""
+      additionalnamespaces: []
+      namespaces: []
   configfile: ""
   pluginfile: ""
 golint: null
