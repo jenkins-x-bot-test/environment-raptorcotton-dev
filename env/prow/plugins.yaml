@@ -7,7 +7,7 @@ owners:
 approve:
 - repos:
   - cb-kubecd/environment-raptorcotton-dev
-  issuerequired: true
+  issuerequired: false
   deprecatedimplicitselfapprove: null
   requireselfapproval: null
   lgtmactsasapprove: false
@@ -15,7 +15,7 @@ approve:
   ignorereviewstate: null
 - repos:
   - cb-kubecd/jx-scheduler-test-repo
-  issuerequired: true
+  issuerequired: false
   deprecatedimplicitselfapprove: null
   requireselfapproval: null
   lgtmactsasapprove: false
