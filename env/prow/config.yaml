@@ -1,7 +1,123 @@
 jobconfig:
   presets: []
-  presubmits: {}
-  postsubmits: {}
+  presubmits:
+    cb-kubecd/environment-raptorcotton-dev:
+    - jobbase:
+        name: integration
+        labels: {}
+        maxconcurrency: 0
+        agent: tekton
+        cluster: ""
+        namespace: null
+        erroroneviction: false
+        sourcepath: ""
+        spec: null
+        buildspec: null
+        utilityconfig:
+          decorate: false
+          pathalias: ""
+          cloneuri: ""
+          skipsubmodules: false
+          extrarefs: []
+          decorationconfig: null
+      alwaysrun: true
+      context: integration
+      optional: false
+      skipreport: false
+      trigger: (?m)^/test( all| this),?(\s+|$)
+      reruncommand: /test this
+      brancher:
+        skipbranches: []
+        branches: []
+      regexpchangematcher:
+        runifchanged: ""
+    cb-kubecd/jx-scheduler-test-repo:
+    - jobbase:
+        name: integration
+        labels: {}
+        maxconcurrency: 0
+        agent: tekton
+        cluster: ""
+        namespace: null
+        erroroneviction: false
+        sourcepath: ""
+        spec: null
+        buildspec: null
+        utilityconfig:
+          decorate: false
+          pathalias: ""
+          cloneuri: ""
+          skipsubmodules: false
+          extrarefs: []
+          decorationconfig: null
+      alwaysrun: true
+      context: integration
+      optional: false
+      skipreport: false
+      trigger: (?m)^/test( all| this),?(\s+|$)
+      reruncommand: /test this
+      brancher:
+        skipbranches: []
+        branches: []
+      regexpchangematcher:
+        runifchanged: ""
+  postsubmits:
+    cb-kubecd/environment-raptorcotton-dev:
+    - jobbase:
+        name: release
+        labels: {}
+        maxconcurrency: 0
+        agent: tekton
+        cluster: ""
+        namespace: null
+        erroroneviction: false
+        sourcepath: ""
+        spec: null
+        buildspec: null
+        utilityconfig:
+          decorate: false
+          pathalias: ""
+          cloneuri: ""
+          skipsubmodules: false
+          extrarefs: []
+          decorationconfig: null
+      regexpchangematcher:
+        runifchanged: ""
+      brancher:
+        skipbranches: []
+        branches:
+        - master
+      context: ""
+      report: false
+    cb-kubecd/jx-scheduler-test-repo:
+    - jobbase:
+        name: release
+        labels: {}
+        maxconcurrency: 0
+        agent: tekton
+        cluster: ""
+        namespace: null
+        erroroneviction: false
+        sourcepath: ""
+        spec: null
+        buildspec: null
+        utilityconfig:
+          decorate: false
+          pathalias: ""
+          cloneuri: ""
+          skipsubmodules: false
+          extrarefs: []
+          decorationconfig: null
+      regexpchangematcher:
+        runifchanged: ""
+      brancher:
+        skipbranches: []
+        branches:
+        - master
+        - master
+        - master
+      context: ""
+      report: false
   periodics: []
 prowconfig:
   tide:
@@ -9,7 +125,45 @@ prowconfig:
     syncperiod: 0s
     statusupdateperiodstring: ""
     statusupdateperiod: 0s
-    queries: []
+    queries:
+    - orgs: []
+      repos:
+      - cb-kubecd/environment-raptorcotton-dev
+      excludedrepos: []
+      excludedbranches: []
+      includedbranches: []
+      labels:
+      - approved
+      missinglabels:
+      - do-not-merge
+      - do-not-merge/hold
+      - do-not-merge/work-in-progress
+      - needs-ok-to-test
+      - needs-rebase
+      milestone: ""
+      reviewapprovedrequired: false
+    - orgs: []
+      repos:
+      - cb-kubecd/jx-scheduler-test-repo
+      excludedrepos: []
+      excludedbranches: []
+      includedbranches: []
+      labels:
+      - approved
+      - approved
+      missinglabels:
+      - do-not-merge
+      - do-not-merge/hold
+      - do-not-merge/work-in-progress
+      - needs-ok-to-test
+      - needs-rebase
+      - do-not-merge
+      - do-not-merge/hold
+      - do-not-merge/work-in-progress
+      - needs-ok-to-test
+      - needs-rebase
+      milestone: ""
+      reviewapprovedrequired: false
     mergetype: {}
     targeturl: ""
     prstatusbaseurl: ""
@@ -18,11 +172,11 @@ prowconfig:
     maxgoroutines: 0
     contextoptions:
       tidecontextpolicy:
-        skipunknowncontexts: null
+        skipunknowncontexts: false
         requiredcontexts: []
         requiredifpresentcontexts: []
         optionalcontexts: []
-        frombranchprotection: null
+        frombranchprotection: true
       orgs: {}
   plank:
     controller:
@@ -61,8 +215,38 @@ prowconfig:
       admins: null
       restrictions: null
       requiredpullrequestreviews: null
-    protecttested: false
-    orgs: {}
+    protecttested: true
+    orgs:
+      cb-kubecd:
+        policy:
+          protect: null
+          requiredstatuschecks: null
+          admins: null
+          restrictions: null
+          requiredpullrequestreviews: null
+        repos:
+          environment-raptorcotton-dev:
+            policy:
+              protect: true
+              requiredstatuschecks:
+                contexts:
+                - integration
+                strict: null
+              admins: null
+              restrictions: null
+              requiredpullrequestreviews: null
+            branches: {}
+          jx-scheduler-test-repo:
+            policy:
+              protect: true
+              requiredstatuschecks:
+                contexts:
+                - integration
+                strict: null
+              admins: null
+              restrictions: null
+              requiredpullrequestreviews: null
+            branches: {}
     allowdisabledpolicies: false
   orgs: {}
   gerrit:
