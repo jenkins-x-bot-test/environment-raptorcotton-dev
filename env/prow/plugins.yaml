@@ -4,7 +4,23 @@ owners:
   mdyamlrepos: []
   skipcollaborators: []
   labelsblacklist: []
-approve: []
+approve:
+- repos:
+  - cb-kubecd/environment-raptorcotton-dev
+  issuerequired: true
+  deprecatedimplicitselfapprove: null
+  requireselfapproval: null
+  lgtmactsasapprove: false
+  deprecatedreviewactsasapprove: null
+  ignorereviewstate: null
+- repos:
+  - cb-kubecd/jx-scheduler-test-repo
+  issuerequired: true
+  deprecatedimplicitselfapprove: null
+  requireselfapproval: null
+  lgtmactsasapprove: false
+  deprecatedreviewactsasapprove: null
+  ignorereviewstate: null
 usedeprecatedselfapprove: false
 usedeprecatedreviewapprove: false
 blockades: []
