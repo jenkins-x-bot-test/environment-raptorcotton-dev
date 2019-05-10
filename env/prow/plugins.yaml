@@ -7,7 +7,7 @@ owners:
 approve:
 - repos:
   - cb-kubecd/environment-raptorcotton-dev
-  issuerequired: true
+  issuerequired: false
   deprecatedimplicitselfapprove: null
   requireselfapproval: null
   lgtmactsasapprove: false
