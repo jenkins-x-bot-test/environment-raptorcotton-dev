@@ -1,61 +1,23 @@
-plugins: {}
-externalplugins: {}
-owners:
-  mdyamlrepos: []
-  skipcollaborators: []
-  labelsblacklist: []
 approve:
 - repos:
   - cb-kubecd/environment-raptorcotton-dev
-  issuerequired: false
-  deprecatedimplicitselfapprove: null
-  requireselfapproval: null
-  lgtmactsasapprove: false
-  deprecatedreviewactsasapprove: null
-  ignorereviewstate: null
-- repos:
+- issue_required: true
+  repos:
   - cb-kubecd/jx-scheduler-test-repo
-  issuerequired: true
-  deprecatedimplicitselfapprove: null
-  requireselfapproval: null
-  lgtmactsasapprove: false
-  deprecatedreviewactsasapprove: null
-  ignorereviewstate: null
-usedeprecatedselfapprove: false
-usedeprecatedreviewapprove: false
-blockades: []
-blunderbuss:
-  reviewercount: null
-  maxreviewercount: 0
-  fileweightcount: null
-  excludeapprovers: false
-cat:
-  keypath: ""
-cherrypickunapproved:
-  branchregexp: ""
-  branchre: null
-  comment: ""
-configupdater:
-  maps: {}
-  configfile: ""
-  pluginfile: ""
-golint: null
-heart:
-  adorees: []
-  commentregexp: ""
-  commentre: null
-label: null
-lgtm: []
-repomilestone: {}
-requirematchinglabel: []
-requiresig:
-  grouplisturl: ""
-slack:
-  mentionchannels: []
-  mergewarnings: []
-sigmention:
-  regexp: ""
-  re: null
-size: null
-triggers: []
-welcome: []
+blunderbuss: {}
+cat: {}
+cherry_pick_unapproved: {}
+config_updater:
+  maps:
+    env/prow/config.yaml:
+      name: config
+    env/prow/plugins.yaml:
+      name: plugins
+heart: {}
+owners: {}
+plugins:
+  cb-kubecd/environment-raptorcotton-dev:
+  - config-updater
+requiresig: {}
+sigmention: {}
+slack: {}
