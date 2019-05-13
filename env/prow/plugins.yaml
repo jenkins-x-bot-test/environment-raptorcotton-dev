@@ -1,4 +1,6 @@
-plugins: {}
+plugins:
+  cb-kubecd/environment-raptorcotton-dev:
+  - config-updater
 externalplugins: {}
 owners:
   mdyamlrepos: []
@@ -7,7 +9,7 @@ owners:
 approve:
 - repos:
   - cb-kubecd/environment-raptorcotton-dev
-  issuerequired: true
+  issuerequired: false
   deprecatedimplicitselfapprove: null
   requireselfapproval: null
   lgtmactsasapprove: false
@@ -36,7 +38,19 @@ cherrypickunapproved:
   branchre: null
   comment: ""
 configupdater:
-  maps: {}
+  maps:
+    env/prow/config.yaml:
+      name: config
+      key: ""
+      namespace: ""
+      additionalnamespaces: []
+      namespaces: []
+    env/prow/plugins.yaml:
+      name: plugins
+      key: ""
+      namespace: ""
+      additionalnamespaces: []
+      namespaces: []
   configfile: ""
   pluginfile: ""
 golint: null

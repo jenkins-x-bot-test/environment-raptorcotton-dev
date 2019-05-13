@@ -150,13 +150,7 @@ prowconfig:
       includedbranches: []
       labels:
       - approved
-      - approved
       missinglabels:
-      - do-not-merge
-      - do-not-merge/hold
-      - do-not-merge/work-in-progress
-      - needs-ok-to-test
-      - needs-rebase
       - do-not-merge
       - do-not-merge/hold
       - do-not-merge/work-in-progress
